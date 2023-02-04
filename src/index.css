@@ -1,0 +1,56 @@
+.tituloNavBar{
+    color: rgba(109, 45, 151, 0.74);
+    padding: 25px;
+    text-align: start;
+    font-weight: 500;
+    font-size: x-large;
+    cursor: pointer;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.barranavegacion{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(80, 125, 192, 0.288);
+    align-items: center;
+}
+
+
+
+.botoncelulares{
+    color: rgba(131, 57, 180, 0.74);
+    font-weight: 500;
+    font-size: x-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 10px;
+    display: flex;
+
+}
+
+.iconoBag{
+    display: flex;
+    padding-top: 10px;
+    cursor: pointer; 
+    width: 250px;
+}
+
+#espaciado{
+    width: 60px;
+    height:60px;    
+    border: solid;
+    border-radius: 30%;
+    border-color: rgb(117, 141, 141);
+    background-color: rgba(211, 197, 178, 0.452);
+}
+
+.contenedor5{
+    padding-right:200px ;
+}
+
+.categorias{
+    font-style: oblique;
+    padding: 20px;
+    text-decoration: underline;
+    background-color: rgba(130, 201, 219, 0.363);
+    padding-top: 50px;
+}
