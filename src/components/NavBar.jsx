@@ -16,20 +16,21 @@ import { ChevronDownIcon } from '@chakra-ui/icons'
 
 const NavBar = () => {
   return (
-    <div class = "barranavegacion">
-      <h1 class = "tituloNavBar" > 
+    <div className = "barranavegacion">
+      <h1 className = "tituloNavBar" > 
       <Text fontSize='3xl'>Best-cells</Text>  
       </h1>
 
     <div>
   <Menu>
-  <MenuButton  fontSize='2xl'  class = "botoncelulares" as={Button} rightIcon={<ChevronDownIcon />}>
+  <Button className = "botoncelulares" fontSize='2xl'>Catalogo</Button>
+  <MenuButton  fontSize='2xl'  className = "botoncelulares" as={Button} rightIcon={<ChevronDownIcon />}>
   <Text >Celulares</Text>
   </MenuButton>
   <MenuList>
-    <MenuItem>Nuevos</MenuItem>
-    <MenuItem>Usados</MenuItem>
-    <MenuItem>Contacto</MenuItem>
+    <MenuItem>Iphone</MenuItem>
+    <MenuItem>Motorola</MenuItem>
+    <MenuItem>Samsung</MenuItem>
   </MenuList>
   </Menu>
     

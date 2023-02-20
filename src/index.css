@@ -47,10 +47,34 @@
     padding-right:200px ;
 }
 
-.categorias{
-    font-style: oblique;
+
+.contenedorProductos{
+    padding: 40px;
+    background-color: rgba(141, 212, 214, 0.548);
+    
+}
+
+
+.contenedorCelulares{
     padding: 20px;
-    text-decoration: underline;
-    background-color: rgba(130, 201, 219, 0.363);
-    padding-top: 50px;
+}
+
+.posicionCelular{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.estilosCelus{
+    border: solid;
+    border-radius: 1.5%;
+    border-color: rgb(178, 231, 231);
+}
+
+.DetailEstilos{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(187, 220, 221, 0.548);
+
 }
