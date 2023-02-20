@@ -19,7 +19,7 @@
 
 
 .botoncelulares{
-    color: rgba(131, 57, 180, 0.74);
+    color: rgba(97, 66, 117, 0.74);
     font-weight: 500;
     font-size: x-large;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -52,7 +52,7 @@
 
 .contenedorProductos{
     padding: 40px;
-    background-color: rgba(141, 212, 214, 0.548);
+    background-color: rgba(127, 219, 199, 0.541);
     
 }
 
@@ -94,7 +94,7 @@
 }
 .espaciadoCart{
     padding: 100px;
-    background-color: rgba(187, 220, 221, 0.486);
+    background-color: rgba(170, 232, 235, 0.486);
 }
 
 .formularioTitle{
