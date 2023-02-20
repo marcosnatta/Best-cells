@@ -13,29 +13,50 @@ import {
 } from '@chakra-ui/react'
 import { Button} from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
     <div className = "barranavegacion">
       <h1 className = "tituloNavBar" > 
+      <Link to="/catalogo">
       <Text fontSize='3xl'>Best-cells</Text>  
+      </Link>
       </h1>
 
-    <div>
+     
   <Menu>
+   
+   
+  <Link to="/">
   <Button className = "botoncelulares" fontSize='2xl'>Catalogo</Button>
+  </Link>
+   
+    
+  
   <MenuButton  fontSize='2xl'  className = "botoncelulares" as={Button} rightIcon={<ChevronDownIcon />}>
+
   <Text >Celulares</Text>
   </MenuButton>
+   
   <MenuList>
+    <Link to={`/categoria/${"Iphone"}`}>
     <MenuItem>Iphone</MenuItem>
+    </Link>
+
+    <Link to={`/categoria/${"Motorola"}`}>
     <MenuItem>Motorola</MenuItem>
+    </Link>
+    
+    <Link to={`/categoria/${"Samsung"}`}>
     <MenuItem>Samsung</MenuItem>
+    </Link>
   </MenuList>
   </Menu>
     
-    </div>
+    <Link to="/cart">  
       <CartWidget/>
+    </Link>
       
     </div>
   )

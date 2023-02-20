@@ -17,6 +17,7 @@
 
 
 
+
 .botoncelulares{
     color: rgba(131, 57, 180, 0.74);
     font-weight: 500;
@@ -24,6 +25,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding-top: 10px;
     display: flex;
+    
 
 }
 
@@ -77,4 +79,34 @@
     justify-content: center;
     background-color: rgba(187, 220, 221, 0.548);
 
+}
+
+.espaciadoDetail{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.centerForm{
+    display: flex;
+    flex-direction: column;
+    
+}
+.espaciadoCart{
+    padding: 100px;
+    background-color: rgba(187, 220, 221, 0.486);
+}
+
+.formularioTitle{
+   color: red;
+   padding: 30px;
+   text-align: center;
+   font-size: x-large;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: oblique;
+    font-weight: 400;
+    text-decoration: underline;
+}
+.fondoCart{
+    background-color: rgba(187, 220, 221, 0.548);
 }

@@ -1,10 +1,15 @@
 import ItemList from "./ItemList";
 import React, {useEffect, useState} from "react";
+import { useParams } from "react-router-dom";
+import { Center } from '@chakra-ui/react'
 
+const ItemListContainer = () => {
+    
+  const {categoria} =useParams()
+  
 
-const ItemListContainer = () => {  
   const [productos, setProductos]= useState([]);
-  console.log(productos)
+  
   useEffect(()=>{
     async function fetchData(){
       try{
@@ -12,17 +17,22 @@ const ItemListContainer = () => {
         const datosFetch = await response.json();
         setProductos(datosFetch);
       }catch(error){
-        console.log(error);
       }
     }
     fetchData();
   }, []);
 
-  return<> 
 
-     <ItemList productos={productos}/>
+
+const filtradoproductos = productos.filter((celular)=> celular.categoria === categoria);
+
+  return<> 
+    <div>
+   {categoria ? <ItemList productos={filtradoproductos}/> : <ItemList productos={productos}/>}
+    </div>
  
   </>
 }
+
 
 export default ItemListContainer
