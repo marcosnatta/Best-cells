@@ -3,10 +3,12 @@ import ItemListContainer from './components/ItemListContainer'
 import ItemDetailContainer from "./components/ItemDetailContainer"
 import Cart from "./components/Cart"
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import ShoppingCartContext from './context/ShoppingCartContext'
 
 const App = () => {
   return (
      <>
+  <ShoppingCartContext>
   <BrowserRouter>
   <NavBar/>
   <Routes>
@@ -17,6 +19,7 @@ const App = () => {
     <Route exact path='/cart' element={<Cart/>}/>
   </Routes>
   </BrowserRouter>
+  </ShoppingCartContext>
     
     </>
 
