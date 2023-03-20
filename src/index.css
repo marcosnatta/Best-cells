@@ -42,7 +42,7 @@
     border: solid;
     border-radius: 30%;
     border-color: rgb(117, 141, 141);
-    background-color: rgba(211, 197, 178, 0.452);
+    background-color: rgba(141, 109, 63, 0.452);
 }
 
 .contenedor5{
@@ -50,63 +50,24 @@
 }
 
 
-.contenedorProductos{
-    padding: 40px;
-    background-color: rgba(127, 219, 199, 0.541);
-    
-}
-
-
-.contenedorCelulares{
-    padding: 20px;
-}
-
-.posicionCelular{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-.estilosCelus{
-    border: solid;
-    border-radius: 1.5%;
-    border-color: rgb(178, 231, 231);
-}
-
-.DetailEstilos{
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    background-color: rgba(187, 220, 221, 0.548);
-
-}
-
-.espaciadoDetail{
+.tarjetaCelulares{ 
+    padding: 30px;
     display: flex;
     align-items: center;
-    gap: 20px;
-}
-
-.centerForm{
-    display: flex;
-    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap
     
-}
-.espaciadoCart{
-    padding: 100px;
-    background-color: rgba(170, 232, 235, 0.486);
+    
+
 }
 
-.formularioTitle{
-   color: red;
-   padding: 30px;
+.hola{
+   border-radius: 5%;
+   border-style: solid;
+   border-color: blue;
+   background-color: rgba(240, 114, 114, 0.199);
+   padding: 20px;
    text-align: center;
-   font-size: x-large;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-style: oblique;
-    font-weight: 400;
-    text-decoration: underline;
-}
-.fondoCart{
-    background-color: rgba(187, 220, 221, 0.548);
+   
 }

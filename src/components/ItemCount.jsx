@@ -28,7 +28,7 @@ const ItemCount = ({stock, id, price, name}) => {
           }
         });
       } else{
-        return [...currItems, {id, cantidad: count, price, name}]
+        return [...currItems, {id, cantidad: count, precio, nombre}]
       }
     });
   };
@@ -36,12 +36,7 @@ const ItemCount = ({stock, id, price, name}) => {
   return (
     <>
 
-    <div className="espaciadoDetail">
-
-    <Button onClick={()=> setNumero(numero - 1)}>-</Button>
-    <span>{numero}</span>
-    <Button onClick={()=> setNumero(numero + 1)}>+</Button>
-    </div>
+    
 
     </>
   )

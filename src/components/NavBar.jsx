@@ -6,10 +6,6 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
 } from '@chakra-ui/react'
 import { Button} from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
@@ -28,7 +24,7 @@ const NavBar = () => {
   <Menu>
    
    
-  <Link to="/">
+  <Link to="/catalogo">
   <Button className = "botoncelulares" fontSize='2xl'>Catalogo</Button>
   </Link>
    
@@ -36,19 +32,19 @@ const NavBar = () => {
   
   <MenuButton  fontSize='2xl'  className = "botoncelulares" as={Button} rightIcon={<ChevronDownIcon />}>
 
-  <Text >Celulares</Text>
+  <Text >Categoria</Text>
   </MenuButton>
    
   <MenuList>
-    <Link to={`/categoria/${"Iphone"}`}>
+    <Link to={`/Categoria/${"Iphone"}`}>
     <MenuItem>Iphone</MenuItem>
     </Link>
 
-    <Link to={`/categoria/${"Motorola"}`}>
+    <Link to={`/Categoria/${"Motorola"}`}>
     <MenuItem>Motorola</MenuItem>
     </Link>
     
-    <Link to={`/categoria/${"Samsung"}`}>
+    <Link to={`/Categoria/${"Samsung"}`}>
     <MenuItem>Samsung</MenuItem>
     </Link>
   </MenuList>

@@ -1,68 +1,40 @@
-import ItemList from "./ItemList";
-import React, {useEffect, useState} from "react";
+import { useEffect, useState} from "react";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { useParams } from "react-router-dom";
+import ItemList from "./ItemList";
+
 
 const ItemListContainer = () => {
-    const[products, setProducts] = useState([])
+  const [celulares, setCelulares] = useState([]);
+  const { Categoria } = useParams()
 
-    useEffect(() =>{
-        const db = getFirestone();
+  useEffect(() => {
+    const db = getFirestore();
 
-const itemsCollection = collection(db, "celulares");
-getDocs(itemsCollection).then((snapshot)=>{
-    const docs = snapshot.docs.map((doc)=> doc.data())
-    setProducts(docs);
-});
-},[]);
-
-
-
-
-
-
-  return (
-    <div>
-      {products.map((prod)=>
-      <div key={prod.marca}>
-        <h4>marca: {prod.marca}</h4>
-        <p>${prod.precio}</p>
-      </div>
-      )}
-    </div>
-  )
-}
-
-/*
-const ItemListContainer = () => {
+    const celusCollection = collection(db, "Celulares Moviles");
+    getDocs(celusCollection).then ((querysnapshot) => {
+      const celulares = querysnapshot.docs.map((doc) => ({...doc.data(),
+      id: doc.id
+    }));
+    setCelulares(celulares)
+      console.log(celulares)
+    });
+  },[]);
     
-  const {categoria} =useParams()
-  
 
-  const [productos, setProductos]= useState([]);
-  
-  useEffect(()=>{
-    async function fetchData(){
-      try{
-        const response = await fetch("/src/data.json")
-        const datosFetch = await response.json();
-        setProductos(datosFetch);
-      }catch(error){
-      }
-    }
-    fetchData();
-  }, []);
+ const filtro = celulares.filter((productos) => productos.Categoria === Categoria)
 
-  const filtradoproductos = productos.filter((celular)=> celular.categoria === categoria);
+ return (
+
+   <div>
+<h2>Celulares por categoria</h2>
+{Categoria ? <ItemList celulares={filtro}/> : <ItemList celulares={celulares}/>} 
 
 
+</div>
 
-  return<> 
-    <div>
-   {categoria ? <ItemList productos={filtradoproductos}/> : <ItemList productos={productos}/>}
-    </div>
- 
-  </>
+) 
 }
-*/
+
 
 export default ItemListContainer

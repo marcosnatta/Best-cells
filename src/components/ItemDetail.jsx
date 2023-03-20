@@ -1,62 +1,85 @@
-import imgcelular from "../assets/celular.jpg"
-import { Card, CardBody, CardFooter,Stack,Heading,Button,Text,Image, Center } from '@chakra-ui/react'
+import { Card, CardBody, CardFooter,Stack,Heading,Button,Text,Image, Center, Divider, ButtonGroup } from '@chakra-ui/react'
 import ItemCount from "./ItemCount"
-import { Link } from "react-router-dom"
-
-const ItemDetail = ({productos}) => {
-  return (<>
-  {productos.map((celular)=>(
+import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
+import {doc, getDoc, getFirestore} from "firebase/firestore"
 
 
 
-    <div key={celular.id} className="DetailEstilos">
-<div className="contenedorCelulares" >
+
+
+
+const ItemDetail = ({celulares}) => {
+  const { id } = useParams();
+  console.log(id)
+
+  const [producto, setProducto] = useState([]);
+
+  useEffect(() => {
+    const db = getFirestore();
+
+    const importBaseDatos = doc(db, "Celulares Moviles", `${id}`);
+
+    getDoc(importBaseDatos).then((snapshot) => {
+      if (snapshot.exists()) {
+        setProducto(snapshot.data());
+      } else {
+        console.log("no existe el producto")
+      }
+    });
+ }, []);
+ 
+ const filtro = celulares.filter((productos) => productos.id === id)
+
+  return (
+  <>
+  {filtro.map((producto)=>(
+  <div key={producto.id} className="DetailEstilos">
+
+
+    <Center>
       <Card maxW='sm'  bgGradient='linear(red.100 0%, blue.100 25%, green.100 100%)'>
-
   <CardBody>
   <Image
-      src={imgcelular}
+      src={producto.Imagen}
       />
     <Stack mt='7' spacing='4' color='purple'>
-      <Heading size='xl'>{celular.nombre}</Heading>
+      <Heading size='xl'>{producto.Nombre}</Heading>
       <Text color='black' fontSize='2xl' >
-        Descripcion:{celular.descripcion}
+        Descripcion:{producto.Descripcion}
       </Text>
       <Text color='black' fontSize='1xl' >
-        Categoria:{celular.categoria}
+        Categoria: {producto.Categoria}
       </Text>
       <Text color='black' fontSize='1xl'>
-        Stock:{celular.stock}
+        Stock:{producto.Stock}
       </Text>
       <Text color='black' fontSize='1xl'>
-        Precio:$ARS {celular.precio}
+        Precio:$ARS {producto.Precio}
       </Text>
     </Stack>
   </CardBody>
-  <Center>
-
-  <div>
-      <ItemCount/>
-  </div>
-  </Center>
-  <Center>
+  <Divider/>
   <CardFooter>
-    <Link to="/cart">
-      <Button colorScheme='blue'color='black'> 
-      <Text>Añadir al carro</Text>
-      </Button>
-    </Link>
+  <ButtonGroup>
+    <ItemCount 
+    stock = {producto.Stock}
+    id= {producto.id}
+    precio = {producto.Precio}
+    nombre = {producto.Nombre}
+    />
+  </ButtonGroup>
   </CardFooter>
-  </Center>
 </Card>
-</div>
+</Center>
+
  </div>
 
 
   ))}
   </>
    
-  )
+  );
 }
 
 export default ItemDetail
