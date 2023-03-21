@@ -1,43 +1,81 @@
 import { Card, CardBody, CardFooter, CardHeader, Center, Container, Heading } from "@chakra-ui/react";
-import { useState, useContext } from "react"
+import { useState, useEffect, useContext } from "react"
 import { CartContext } from "../context/ShoppingCartContext"
 import Order from "./Order"
 
 
 const Cart = () => {
   const {cart,setCart} = useContext(CartContext);
-  const [nombreUsuario, setNombreUsuario] = useState("")
-  const [mailUsuario, setMailUsuario] = useState("")
+  const [totales , setTotales] = useState(0)
+  
+  useEffect(() => {
+    let total = 0
+    cart?.forEach(item => {
+      total += (item.precio*item.cantidad)
+    })
+    setTotales(total)
+  }), [cart];
 
-   
+
+const borrarItem = (id) => {
+  Swal({
+    title: "¿seguro quieres borrar el celular?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Eliminar"
+  }).then((result) => {
+    if(result.isConfirmed){
+      const nuevoCarro = cart.filter(item => item.id !== id);
+      setCart(nuevoCarro);
+      Swal(
+        "Eliminado",
+        "success"
+      )
+    }
+  })
+}
+
   return <>
+  <div >
+
   <Center h="100px" color="red">
-    <Heading as="h2" size="2x1">
-      Carrito
+    <Heading as="h1" size="2x1">
+        Carrito de compras
     </Heading>
   </Center>
-  {cart.map((item) => {
+  {(cart?.length == 0) && <span>no hay productos seleccionados</span>}
+  {cart?.map((item) => {
     return(
-      <Container key={item.id}>
+      <div key={item.id}>
+
+      <Container>
+        <img src={item.Imagen} alt="" />
         <Card maxW="sm">
           <CardHeader>
             <Heading size="md">{item.Nombre}</Heading>
           </CardHeader>
           <CardBody>
-            <Text as="b">cantidad: {item.cantidad}</Text>
+            <Text as="b">cantidad: {item.Cantidad}</Text>
             <Text>Precio: ARS {item.Precio}</Text>
+            <Text>Subtotal: ${item.Precio * item.cantidad}</Text>
           </CardBody>
           <CardFooter>
             <Button colorScheme="red"
-            onClick = {() => console.log("eliminando")}>
+            onClick = {() => borrarItem(item.id)}>
               Borrar del carrito
             </Button>
           </CardFooter>
         </Card>
       </Container> 
+      </div>
     );
   })}
-  <Order/>
+  {((cart?.length > 0) && <h3>Total : ${totales}</h3>)}
+  {((cart?.length > 0) && <Order/>)}
+  </div>
+  
   </>
 }
 

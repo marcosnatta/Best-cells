@@ -36,15 +36,15 @@ const NavBar = () => {
   </MenuButton>
    
   <MenuList>
-    <Link to={`/Categoria/${"Iphone"}`}>
+    <Link to={`/categoria/${"iphone"}`}>
     <MenuItem>Iphone</MenuItem>
     </Link>
 
-    <Link to={`/Categoria/${"Motorola"}`}>
+    <Link to={`/categoria/${"motorola"}`}>
     <MenuItem>Motorola</MenuItem>
     </Link>
     
-    <Link to={`/Categoria/${"Samsung"}`}>
+    <Link to={`/categoria/${"samsung"}`}>
     <MenuItem>Samsung</MenuItem>
     </Link>
   </MenuList>
