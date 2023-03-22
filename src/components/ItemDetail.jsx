@@ -11,7 +11,6 @@ import {doc, getDoc, getFirestore} from "firebase/firestore"
 
 const ItemDetail = ({celulares}) => {
   const { id } = useParams();
-  console.log(id)
 
   const [producto, setProducto] = useState([]);
 

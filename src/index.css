@@ -1,5 +1,5 @@
 .tituloNavBar{
-    color: rgba(109, 45, 151, 0.74);
+    color: rgba(167, 91, 218, 0.966);
     padding: 25px;
     text-align: start;
     font-weight: 500;
@@ -38,12 +38,16 @@
 
 #espaciado{
     width: 60px;
-    height:60px;    
-    border: solid;
+    height:60px;
     border-radius: 30%;
-    border-color: rgb(117, 141, 141);
-    background-color: rgba(141, 109, 63, 0.452);
+    padding:5px;
+    border-color: rgb(117, 141, 141);    
 }
+
+#espaciado:hover{
+    background-color: rgb(226, 219, 214);
+}
+
 
 .contenedor5{
     padding-right:200px ;
@@ -62,12 +66,4 @@
 
 }
 
-.hola{
-   border-radius: 5%;
-   border-style: solid;
-   border-color: blue;
-   background-color: rgba(240, 114, 114, 0.199);
-   padding: 20px;
-   text-align: center;
-   
-}
+/* .hola{} */

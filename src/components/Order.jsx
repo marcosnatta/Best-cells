@@ -5,9 +5,7 @@ import { Button } from "@chakra-ui/react";
 
 
 
-const Order = () => {
-
-    
+const Order = () => {    
 
     const [orderId, setOrderId] = useState(null);
     const [name, setName] = useState("");
@@ -16,6 +14,25 @@ const Order = () => {
     const [domicilio, setDomicilio] = useState("")
 
     const db = getFirestore();
+
+
+
+    const botonComprar = () => {
+  swal(
+    {
+      title: "¿seguro que desea comprar?",
+    buttons:  true,
+    buttons:["cancelar compra","comprar"]
+  }).then((result) => {
+    if(result){
+      swal(      
+      "muchas gracias por comprar",
+      "nuestros vendedores se prondran en contacto con usted",
+      "success"
+      )
+    }
+  })
+}
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -48,35 +65,42 @@ const Order = () => {
         <Input type="text"
          placeholder="ej: marcos" onChange={(e) => setName(e.target.value)}>
         </Input>
+        <FormLabel>Direccion de mail:</FormLabel>
         <Input
               placeholder="Ejemplo: marcos@mail.com"
               type="email"
-              onChange={(e) => setEmail(e.target.value)}
-              />
+              onChange={(e) => setEmail(e.target.value)}/>
+          <FormLabel>Numero de telefono:</FormLabel>
           <Input
               type="number"
               placeholder="11****4444"
               onChange={(e) => setTelefono(e.target.value)}
             />
+          <FormLabel>Direccion de domicilio:</FormLabel>
           <Input
               type="text"
               placeholder="J.V.Gonzalez 123"
               onChange={(e) => setDomicilio(e.target.value)}
             />
-          <Button type="submit">Enviar Orden</Button>
+          <Center>
+
+          <Button type="submit" colorScheme="blue" onClick={botonComprar}>Comprar</Button>
+          </Center>
         </form>
       </FormControl>
     </Container>
 
-    
+    {orderId && (
+
     <Center>
       <Text>
-        ID de su orden: {" "}
+        ID de su compra: {" "}
       </Text>
       <Text>
         {orderId}
       </Text>
     </Center>
+    )}
    </div>
 
 
@@ -103,24 +127,5 @@ const Order = () => {
 
 export default Order
 /*
-
-<div>
-      <form onSubmit={handleSubmit}>
-        <input type="text"
-        placeholder="Nombre y Apellido"
-        onChange={(e) => setName(e.target.value)}
-         />
-
-
-
-         <input type="text"
-         placeholder="Email"
-         onChange={(e)=> setEmail(e.target.value)}
-          />
-
-        <button type="submit">Enviar Informacion</button>
-      </form>
-    <p>Numero de Orden: {OrderId}</p>      
-    </div>
-
+<Button type="submit">Enviar Orden</Button>
     */

@@ -17,7 +17,7 @@ const ItemListContainer = () => {
       id: doc.id
     }));
     setCelulares(celulares)
-      console.log(celulares)
+      
     });
   },[]);
     
@@ -25,13 +25,10 @@ const ItemListContainer = () => {
  const filtro = celulares.filter((productos) => productos.Categoria === Categoria)
 
  return (
+  <>
 
-   <div>
-<h2>Celulares por categoria</h2>
 {Categoria ? <ItemList celulares={filtro}/> : <ItemList celulares={celulares}/>} 
-
-
-</div>
+  </>
 
 ) 
 }

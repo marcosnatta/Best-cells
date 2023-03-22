@@ -1,11 +1,11 @@
-import { Card, CardBody, CardFooter, CardHeader, Center, Container, Heading } from "@chakra-ui/react";
+import { Card, CardBody, CardFooter, CardHeader, Center, Container, Heading, Button, Text, Image } from "@chakra-ui/react";
 import { useState, useEffect, useContext } from "react"
 import { CartContext } from "../context/ShoppingCartContext"
 import Order from "./Order"
-
+import Swal from "sweetalert"
 
 const Cart = () => {
-  const {cart,setCart} = useContext(CartContext);
+  const [cart,setCart] = useContext(CartContext);
   const [totales , setTotales] = useState(0)
   
   useEffect(() => {
@@ -16,26 +16,26 @@ const Cart = () => {
     setTotales(total)
   }), [cart];
 
-
 const borrarItem = (id) => {
   Swal({
-    title: "¿seguro quieres borrar el celular?",
+    title: "¿seguro quieres borrarlo de su pedido?",
     icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Eliminar"
+    buttons: true,
+
+    buttons:["continuar la compra","eliminar"] 
   }).then((result) => {
-    if(result.isConfirmed){
+    if(result){
       const nuevoCarro = cart.filter(item => item.id !== id);
       setCart(nuevoCarro);
       Swal(
         "Eliminado",
-        "success"
+        "su producto fue eliminado de la lista de compra"
       )
     }
   })
 }
+
+
 
   return <>
   <div >
@@ -49,31 +49,51 @@ const borrarItem = (id) => {
   {cart?.map((item) => {
     return(
       <div key={item.id}>
-
       <Container>
-        <img src={item.Imagen} alt="" />
         <Card maxW="sm">
           <CardHeader>
-            <Heading size="md">{item.Nombre}</Heading>
+            <Heading size="md">{item.nombre}</Heading>
           </CardHeader>
           <CardBody>
-            <Text as="b">cantidad: {item.Cantidad}</Text>
-            <Text>Precio: ARS {item.Precio}</Text>
-            <Text>Subtotal: ${item.Precio * item.cantidad}</Text>
+            <Text as="b">cantidad: {item.cantidad}</Text>
+            <Text>Precio: ARS ${item.precio}</Text>
+            <Text>Subtotal: ${item.precio*item.cantidad}</Text>
           </CardBody>
           <CardFooter>
+          <Center>
             <Button colorScheme="red"
             onClick = {() => borrarItem(item.id)}>
               Borrar del carrito
             </Button>
+          </Center>
+
           </CardFooter>
         </Card>
       </Container> 
       </div>
     );
   })}
-  {((cart?.length > 0) && <h3>Total : ${totales}</h3>)}
-  {((cart?.length > 0) && <Order/>)}
+  <div>
+  <Center>
+  {cart.length > 0 && (
+        <>
+          <Container>
+            <Center>
+            <Text  fontSize="2xl">
+              Total: $ {totales}
+            </Text>
+            </Center>
+            <Order cart={cart} totales={totales}/>
+          </Container>
+          
+        </>
+          
+       )}
+  </Center>
+  </div>
+  </div>
+  <div>
+   
   </div>
   
   </>
