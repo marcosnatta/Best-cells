@@ -19,9 +19,9 @@ const ItemDetail = ({celulares}) => {
 
     const importBaseDatos = doc(db, "Celulares Moviles", `${id}`);
 
-    getDoc(importBaseDatos).then((snapshot) => {
-      if (snapshot.exists()) {
-        setProducto(snapshot.data());
+    getDoc(importBaseDatos).then((querysnapshot) => {
+      if (querysnapshot.exists()) {
+        setProducto(querysnapshot.data());
       } else {
         console.log("no existe el producto")
       }
@@ -30,10 +30,10 @@ const ItemDetail = ({celulares}) => {
  
  const filtro = celulares.filter((productos) => productos.id === id)
 
-  return (
-  <>
+  return ( <div>
+
   {filtro.map((producto)=>(
-  <div key={producto.id} className="DetailEstilos">
+    <div key={producto.id} >
 
 
     <Center>
@@ -75,8 +75,8 @@ const ItemDetail = ({celulares}) => {
  </div>
 
 
-  ))}
-  </>
+))}
+</div>
    
   );
 }

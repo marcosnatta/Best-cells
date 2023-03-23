@@ -3,7 +3,7 @@ import {CartContext} from "../context/ShoppingCartContext";
 
 
 const CartWidget = () => {
-  const [cart, setCart] = useContext(CartContext);
+  const {cart, setCart} = useContext(CartContext);
   
   const cantidad = cart.reduce((acc,curr)=>{
     return acc + curr.cantidad;

@@ -4,9 +4,9 @@ import { MinusIcon, AddIcon } from "@chakra-ui/icons";
 import {CartContext} from "../context/ShoppingCartContext";
 
 
-const ItemCount = ({stock, id, precio, nombre}) => {
+const ItemCount = ({stock, id, precio, nombre, imagen}) => {
 
-    const[ cart, setCart] = useContext(CartContext);
+    const{cart, setCart} = useContext(CartContext);
     const[count, setCount] = useState(1)
 
     const sumar = ()=>{
@@ -40,7 +40,7 @@ const ItemCount = ({stock, id, precio, nombre}) => {
           }
         });
       } else{
-        return [...currItems, {id, cantidad: count, precio, nombre}]
+        return [...currItems, {id, cantidad: count, precio, imagen, nombre}]
       }
     
     });
@@ -53,7 +53,7 @@ const ItemCount = ({stock, id, precio, nombre}) => {
       </Button>
 
       <Button onClick={()=> AgregarAlCarrito()} variant="solid" colorScheme="blue">
-       Add to cart: {count}
+      Añadir al carrito: {count}
        </Button>
 
       <Button variant="solid" colorScheme="gray" onClick={sumar} >

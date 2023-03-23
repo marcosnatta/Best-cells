@@ -12,7 +12,7 @@ const Item = ({id, nombre, stock, categoria, imagen}) => {
   <CardBody>
     <Image
       src={imagen}
-      />
+      className="ajustarImagen"/>
     <Stack mt='6' spacing='3'>
       <Heading size='md'>{nombre}</Heading>
       <Text>
@@ -39,33 +39,3 @@ const Item = ({id, nombre, stock, categoria, imagen}) => {
 }
 
 export default Item
-
-
-/*
-<Card maxW='sm' bgGradient='linear(red.100 0%, blue.100 25%, green.100 100%)'>
-  <CardBody>
-    <Image
-      src={imagen}
-      />
-    <Stack mt='6' spacing='3'>
-      <Heading size='md'>{nombre}</Heading>
-      <Text>
-        Categoria:{categoria}
-      </Text>
-      <Text color='blue.600' fontSize='2xl'>
-        Stock:{stock}
-      </Text>
-    </Stack>
-  </CardBody>
-  <Divider />
-  <CardFooter>
-
-  <Button colorScheme='green'>
-    <Link to={`/item/${id}`}>
-        Detalles del producto
-    </Link>
-      </Button>
-    
-  </CardFooter>
-</Card>
-*/

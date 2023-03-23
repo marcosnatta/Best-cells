@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import {CartContext} from "../context/ShoppingCartContext"
 import{ collection ,getFirestore, addDoc} from "firebase/firestore"
 import { Center, Container, FormControl, FormLabel, Heading, Input, Text  } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
@@ -15,28 +16,10 @@ const Order = () => {
 
     const db = getFirestore();
 
-
-
-    const botonComprar = () => {
-  swal(
-    {
-      title: "¿seguro que desea comprar?",
-    buttons:  true,
-    buttons:["cancelar compra","comprar"]
-  }).then((result) => {
-    if(result){
-      swal(      
-      "muchas gracias por comprar",
-      "nuestros vendedores se prondran en contacto con usted",
-      "success"
-      )
-    }
-  })
-}
-
     const handleSubmit = (e) => {
       e.preventDefault();
       addDoc(ordersCollection, order).then(({ id }) => setOrderId(id));
+      
     };
 
     const order = {
@@ -60,7 +43,7 @@ const Order = () => {
     <Container>
       <FormControl>
         <form onSubmit={handleSubmit}>
-
+        <span>Antes de efectuar la compra usted debera obtener su identificiacion de compra "ID"</span>
         <FormLabel>Nombre Completo:</FormLabel>
         <Input type="text"
          placeholder="ej: marcos" onChange={(e) => setName(e.target.value)}>
@@ -82,50 +65,21 @@ const Order = () => {
               placeholder="J.V.Gonzalez 123"
               onChange={(e) => setDomicilio(e.target.value)}
             />
-          <Center>
-
-          <Button type="submit" colorScheme="blue" onClick={botonComprar}>Comprar</Button>
-          </Center>
+          <Button type="submit">obtener ID de su compra</Button>
         </form>
       </FormControl>
     </Container>
-
-    {orderId && (
-
     <Center>
       <Text>
-        ID de su compra: {" "}
+        El ID de su compra es: {" "}
       </Text>
       <Text>
         {orderId}
       </Text>
     </Center>
-    )}
+ 
    </div>
-
-
-
   )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export default Order
-/*
-<Button type="submit">Enviar Orden</Button>
-    */

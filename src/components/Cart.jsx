@@ -4,9 +4,11 @@ import { CartContext } from "../context/ShoppingCartContext"
 import Order from "./Order"
 import Swal from "sweetalert"
 
+
 const Cart = () => {
-  const [cart,setCart] = useContext(CartContext);
+  const {cart, setCart} = useContext(CartContext);
   const [totales , setTotales] = useState(0)
+ 
   
   useEffect(() => {
     let total = 0
@@ -35,25 +37,43 @@ const borrarItem = (id) => {
   })
 }
 
+const botonComprar = () => {
+  swal(
+    {
+      title: "¿seguro que desea comprar?",
+    buttons:  true,
+    buttons:["cancelar compra","comprar"]
+  }).then((result) => {
+    if(result){
+      swal(      
+      "muchas gracias por comprar",
+      "nuestros vendedores se prondran en contacto con usted",
+      "success"
+      )
+    }
+  })
+}
 
 
   return <>
   <div >
 
-  <Center h="100px" color="red">
+  <Center h="100px" color="red" className="estilosTituloCarro">
     <Heading as="h1" size="2x1">
         Carrito de compras
     </Heading>
   </Center>
-  {(cart?.length == 0) && <span>no hay productos seleccionados</span>}
+  {(cart?.length == 0) && <span className="noHayProductos"> UPS No hay productos seleccionados</span>}
   {cart?.map((item) => {
     return(
       <div key={item.id}>
-      <Container>
+      <Container>    
+      
         <Card maxW="sm">
           <CardHeader>
             <Heading size="md">{item.nombre}</Heading>
           </CardHeader>
+        <Image src={item.imagen} className="ajustarImagenCart"/>
           <CardBody>
             <Text as="b">cantidad: {item.cantidad}</Text>
             <Text>Precio: ARS ${item.precio}</Text>
@@ -84,12 +104,15 @@ const borrarItem = (id) => {
             </Text>
             </Center>
             <Order cart={cart} totales={totales}/>
+          <Center>
+            <Button type="submit" colorScheme="blue" onClick={botonComprar}>Comprar</Button>
+          </Center>
           </Container>
           
         </>
           
-       )}
-  </Center>
+          )}
+          </Center>
   </div>
   </div>
   <div>
